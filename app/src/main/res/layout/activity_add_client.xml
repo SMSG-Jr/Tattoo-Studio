@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AddClientActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_addClientPhoto"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:drawable/ic_menu_camera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/lavender"
+        tools:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/name"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_addClientPhoto" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_addClientName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:hint="@string/hint_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView_clientName"
+        app:layout_constraintTop_toBottomOf="@+id/textView_clientName" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientBirthDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/birth_date"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/editText_addClientEmail"
+        app:layout_constraintTop_toBottomOf="@+id/editText_addClientName" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_datePicker"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/set_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView_clientBirthDate"
+        app:layout_constraintTop_toBottomOf="@+id/textView_clientBirthDate" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/phone_number"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_clientName"
+        app:layout_constraintTop_toBottomOf="@+id/button_datePicker" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_addClientPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/hint_phone"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="@+id/editText_addClientName"
+        app:layout_constraintStart_toStartOf="@+id/textView_clientPhone"
+        app:layout_constraintTop_toBottomOf="@+id/textView_clientPhone" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/e_mail"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_clientName"
+        app:layout_constraintTop_toBottomOf="@+id/editText_addClientPhone" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_addClientEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/hint_Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/editText_addClientName"
+        app:layout_constraintStart_toStartOf="@+id/textView_clientEmail"
+        app:layout_constraintTop_toBottomOf="@+id/textView_clientEmail" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_clientAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/add_client"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_addClientEmail" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

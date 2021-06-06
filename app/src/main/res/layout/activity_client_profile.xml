@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ClientProfileActivity">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Client Profile"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView2"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/lavender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_clientProfile"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_ProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Name:"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="XXXXXXXXXX"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_ProfileName"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ProfileName" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_ProfileBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Birth date:"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_clientProfileBirth"
+        app:layout_constraintStart_toStartOf="@+id/textView_clientProfileBirth" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientProfileBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="XX/XX/XXXX"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imageView2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_profileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="E_Mail:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientProfileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="XXXXX@XXXXX.com"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_profileEmail"
+        app:layout_constraintStart_toEndOf="@+id/textView_profileEmail"
+        app:layout_constraintTop_toTopOf="@+id/textView_profileEmail" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_profilePhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Phone Number:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_profileEmail"
+        app:layout_constraintTop_toBottomOf="@+id/textView_profileEmail" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientProfilePhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="(XX)XXXXX_XXXX"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_profilePhone"
+        app:layout_constraintStart_toEndOf="@+id/textView_profilePhone"
+        app:layout_constraintTop_toTopOf="@+id/textView_profilePhone" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_profileInstagram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Instagram:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_profilePhone"
+        app:layout_constraintTop_toBottomOf="@+id/textView_profilePhone" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientProfileInstagram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="XXXXXXXXX"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_profileInstagram"
+        app:layout_constraintStart_toEndOf="@+id/textView_profileInstagram"
+        app:layout_constraintTop_toTopOf="@+id/textView_profileInstagram" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_profileTattoo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Tattoos:"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView_profileInstagram" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientTattooAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="X"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_profileTattoo"
+        app:layout_constraintStart_toEndOf="@+id/textView_profileTattoo"
+        app:layout_constraintTop_toTopOf="@+id/textView_profileTattoo" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_profileTattooCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Total Tattoo cost:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_profileTattoo"
+        app:layout_constraintTop_toBottomOf="@+id/textView_profileTattoo" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientProfileTattooCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="R$XX,XX"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_profileTattooCost"
+        app:layout_constraintStart_toEndOf="@+id/textView_profileTattooCost"
+        app:layout_constraintTop_toTopOf="@+id/textView_profileTattooCost" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_profileFirstTattoo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="First Tattoo date:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_profileTattooCost"
+        app:layout_constraintTop_toBottomOf="@+id/textView_profileTattooCost" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientProfileFirstTattoo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="XX/XX/XXXX"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView_profileFirstTattoo"
+        app:layout_constraintStart_toStartOf="@+id/textView_profileFirstTattoo"
+        app:layout_constraintTop_toBottomOf="@+id/textView_profileFirstTattoo" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_profileLastTattoo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Last Tattoo date:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_profileFirstTattoo"
+        app:layout_constraintTop_toTopOf="@+id/textView_profileFirstTattoo" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_clientProfileLastTattoo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="XX/XX/XXXX"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView_profileLastTattoo"
+        app:layout_constraintStart_toStartOf="@+id/textView_profileLastTattoo"
+        app:layout_constraintTop_toBottomOf="@+id/textView_profileLastTattoo" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_clientTattooList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_clientProfileLastTattoo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
