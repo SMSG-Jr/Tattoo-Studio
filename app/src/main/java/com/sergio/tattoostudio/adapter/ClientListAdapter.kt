@@ -35,7 +35,7 @@ class ClientListAdapter(private val listener: OnItemClickListener) : RecyclerVie
     View.OnClickListener{
         val photo : AppCompatImageView = itemView.findViewById(R.id.imageView_client_photo)
         val name: AppCompatTextView = itemView.findViewById(R.id.textView_client_name)
-        private val tattooDate: AppCompatTextView = itemView.findViewById(R.id.textView_tattoo_date)
+        private val tattooDate: AppCompatTextView = itemView.findViewById(R.id.textView_last_tattoo_date)
 
         fun set(client: ClientInformation) {
             name.text = client.cname

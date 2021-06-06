@@ -3,15 +3,18 @@ package com.sergio.tattoostudio.entity
 import java.io.Serializable
 
 class ClientInformation(
-    val cname:String = "Nome",
-    val cphoneNumber:String = "(XX)XXXXX-XXXX",
-    val cemail:String = "XXX@XXXX.com",
-    val cbirthDate:String = "XX/XX/XXXX",
-    val cdateOfLastTattoo:String = "XX/XX/XXXX",
-    val cinsta:String = "XXXX",
-    val ctattooCount:String = "XX",
-    val ctattooTotalCost:String ="R$ XX,XX",
-    val cdateOfFirstTattoo:String ="XX/XX/XXXX",
+    val id:String = "",
+    val cname:String = "",
+    val cphoto:String = "",
+    val cphoneNumber:String = "",
+    val cemail:String = "",
+    val cbirthDate:String = "",
+    val cdateOfLastTattoo:String = "",
+    val cinsta:String = "",
+    val ctattooCount:String = "",
+    val ctattooTotalCost:String ="",
+    val cdateOfFirstTattoo:String =""
+
 
 ) : Serializable
 

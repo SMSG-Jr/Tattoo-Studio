@@ -24,4 +24,23 @@
     <string name="hint_cpf">___.___.___-__</string>
     <string name="login">Login</string>
     <string name="no_account_option">Don\'t have an account? Create one HERE</string>
+    <string name="date_placeholder">XX/XX/XXXX</string>
+    <string name="instagram">Instagram:</string>
+    <string name="email_placeholder">XXXXX@XXXXX.com</string>
+    <string name="phone_placeholder">(XX)XXXXX_XXXX</string>
+    <string name="tattoos">Tattoos:</string>
+    <string name="total_tattoo_cost">Total Tattoo cost:</string>
+    <string name="value_placeholder">R$XX,XX</string>
+    <string name="first_tattoo_date">First Tattoo date:</string>
+    <string name="last_tattoo_date">Last Tattoo date:</string>
+    <string name="text_placeholder">XXXXXXXXX</string>
+    <string name="client_profile">Client Profile</string>
+    <string name="number_placeholder">XX</string>
+    <string name="description">Description…</string>
+    <string name="log_out">Log Out</string>
+    <string name="add_client_button">Add client button</string>
+    <string name="add_tattoo_button">Add tattoo button</string>
+    <string name="add_tattoo">Add tattoo</string>
+    <string name="hint_add_description">Add description…</string>
+    <string name="hint_value">R$ - - , - -</string>
 </resources>

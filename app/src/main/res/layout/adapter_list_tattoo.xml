@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_tattooPhoto"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_margin="8dp"
+        android:background="@color/lavender"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_tattooDescription"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/description"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_tattooDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView_tattooPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/textView_tattooName" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_tattooDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/date_placeholder"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_tattooPhoto"
+        app:layout_constraintStart_toEndOf="@+id/imageView_tattooPhoto" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_tattooName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_tattooDescription"
+        app:layout_constraintTop_toTopOf="@+id/imageView_tattooPhoto" />
+
+    <TextView
+        android:id="@+id/textView_tattooValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/value_placeholder"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView_tattooDescription"
+        app:layout_constraintStart_toEndOf="@+id/textView_tattooDate"
+        app:layout_constraintTop_toTopOf="@+id/textView_tattooDate" />
+</androidx.constraintlayout.widget.ConstraintLayout>

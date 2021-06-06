@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AddTattooActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/lavender"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_tattooDatePicker"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/set_date"
+        app:layout_constraintEnd_toEndOf="@+id/editText_addTattooDescription"
+        app:layout_constraintStart_toStartOf="@+id/editText_addTattooDescription"
+        app:layout_constraintTop_toBottomOf="@+id/editText_addTattooDescription" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_tattooAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/add_tattoo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_addTattooValue" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_addTattooDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/hint_add_description"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_addTattooName" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_addTattooValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/hint_value"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/button_tattooDatePicker"
+        app:layout_constraintStart_toStartOf="@+id/button_tattooDatePicker"
+        app:layout_constraintTop_toBottomOf="@+id/button_tattooDatePicker" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_addTattooName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/hint_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/editText_addTattooDescription"
+        app:layout_constraintStart_toStartOf="@+id/editText_addTattooDescription"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

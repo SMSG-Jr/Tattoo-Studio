@@ -1,12 +1,23 @@
 package com.sergio.tattoostudio.activity
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.sergio.tattoostudio.R
+import com.sergio.tattoostudio.adapter.TattooListAdapter
 import com.sergio.tattoostudio.entity.ClientInformation
+import com.sergio.tattoostudio.entity.TattooInformation
 
-class ClientProfileActivity : AppCompatActivity() {
+class ClientProfileActivity : AppCompatActivity(), TattooListAdapter.OnItemClickListener {
 
     private lateinit var clientProfName : AppCompatTextView
     private lateinit var clientProfBirth : AppCompatTextView
@@ -17,21 +28,57 @@ class ClientProfileActivity : AppCompatActivity() {
     private lateinit var clientTattooTotalCost : AppCompatTextView
     private lateinit var clientTattooLastDate : AppCompatTextView
     private lateinit var clientTattooFirstDate : AppCompatTextView
+    private lateinit var addTattooFloatButton : FloatingActionButton
+    private lateinit var client : ClientInformation
+
+    private val db = Firebase.firestore
+    private val mAuth : FirebaseAuth = FirebaseAuth.getInstance()
+    private val artistUID = mAuth.currentUser!!.uid
+
+    private val tattooAdapter : TattooListAdapter = TattooListAdapter(this)
+    var tattooList = emptyList<TattooInformation>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_profile)
 
-
+        client = intent.getSerializableExtra("Client") as ClientInformation
 
         findViewsById()
 
+        val recyclerTattooList = findViewById<RecyclerView>(R.id.recyclerView_clientTattooList)
+        recyclerTattooList.apply {
+            adapter = tattooAdapter
+            layoutManager = LinearLayoutManager(context)
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
+        }
+
         setProfileInformation()
+
+        configFloatActionButton()
+
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        db.collection("Tattoo Artist")
+                .document(artistUID)
+                    .collection("Clients")
+                        .document(client.id)
+                            .collection("Tattoos")
+                .get()
+                .addOnSuccessListener { result ->
+                    tattooList = result.toObjects(TattooInformation::class.java)
+                    tattooAdapter.update(tattooList)
+                }
+                .addOnFailureListener { exception ->
+                    Log.w("ADD TATTOO","Error getting document.", exception)
+                }
     }
 
     private fun setProfileInformation() {
-        val client : ClientInformation = intent.getSerializableExtra("Client") as ClientInformation
         clientProfName.text = client.cname
         clientProfBirth.text = client.cbirthDate
         clientProfEmail.text = client.cemail
@@ -53,5 +100,22 @@ class ClientProfileActivity : AppCompatActivity() {
         clientTattooTotalCost = findViewById(R.id.textView_clientProfileTattooCost)
         clientTattooFirstDate = findViewById(R.id.textView_clientProfileFirstTattoo)
         clientTattooLastDate = findViewById(R.id.textView_clientProfileLastTattoo)
+        addTattooFloatButton = findViewById(R.id.floatingActionButton_addTattoo)
+    }
+
+    private fun configFloatActionButton() {
+        addTattooFloatButton.setOnClickListener {
+            val intent = Intent(this, AddTattooActivity::class.java)
+            intent.putExtra("ClientId", client.id)
+            startActivity(intent)
+
+        }
+    }
+
+    override fun onItemClick(position: Int) {
+        val clientClicked = tattooList[position]
+        //val intent = Intent(this, ClientProfileActivity::class.java)
+       // intent.putExtra("Client",clientClicked)
+       // startActivity(intent)
     }
 }

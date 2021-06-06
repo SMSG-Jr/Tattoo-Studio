@@ -31,8 +31,10 @@ class AddClientActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
     private lateinit var buttonBirthDate : AppCompatButton
     private lateinit var buttonAddClient : AppCompatButton
-    private  var currentDate: Calendar = Calendar.getInstance()
-    private lateinit var dateString : String
+
+    private var dateString:String = ""
+
+    private var currentDate: Calendar = Calendar.getInstance()
     private var mAuth : FirebaseAuth = FirebaseAuth.getInstance()
     private var db = Firebase.firestore
     private var artistUID = mAuth.currentUser!!.uid
@@ -45,23 +47,38 @@ class AddClientActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
         datePickerButtonConfig()
 
+        addClientButtonConfig()
+    }
+
+    private fun addClientButtonConfig() {
         buttonAddClient.setOnClickListener {
             getEditTextInfo()
 
-            if(validateString(clientName, editTextName) && validateString(clientPhone, editTextPhoneNumber) && validateString(clientEmail, editTextEmail) && validateDate()){
+            if (validateString(clientName,editTextName)&&
+                validateString(clientPhone,editTextPhoneNumber)&&
+                validateString(clientEmail,editTextEmail)&&
+                validateDate()
+            ) {
                 Toast.makeText(this, "Client added.", Toast.LENGTH_SHORT).show()
+                val id: String = db.collection("Tattoo Artist").document().id
+                val clientInfo = ClientInformation(
+                    id,
+                    clientName,
+                    "",
+                    clientPhone,
+                    clientEmail,
+                    dateString,
+                    "XX/XX/XXXX"
+                )
 
-                val clientInfo = ClientInformation(clientName, clientPhone, clientEmail, dateString, "XX/XX/XXXX")
+                db.collection("Tattoo Artist")
+                    .document(artistUID)
+                    .collection("Clients")
+                    .document(id)
+                    .set(clientInfo)
 
-                db.collection("Tattoo Artist").document(artistUID)
-                    .collection("Clients").document(clientName).set(clientInfo)
-
-                val intent = Intent(this, MainActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(intent)
                 finish()
-            }
-            else{
+            } else {
                 Toast.makeText(this, "An item is empty.", Toast.LENGTH_SHORT).show()
             }
 
@@ -88,8 +105,8 @@ class AddClientActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
     }
 
     private fun findViewsById() {
-        buttonBirthDate = findViewById(R.id.button_datePicker)
-        buttonAddClient = findViewById(R.id.button_clientAdd)
+        buttonBirthDate = findViewById(R.id.button_tattooDatePicker)
+        buttonAddClient = findViewById(R.id.button_tattooAdd)
         editTextName = findViewById(R.id.editText_addClientName)
         editTextPhoneNumber = findViewById(R.id.editText_addClientPhone)
         editTextEmail = findViewById(R.id.editText_addClientEmail)
