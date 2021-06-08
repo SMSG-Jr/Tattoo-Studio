@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.sergio.tattoostudio.R
 import com.sergio.tattoostudio.adapter.TattooListAdapter
@@ -37,6 +39,7 @@ class ClientProfileActivity : AppCompatActivity(), TattooListAdapter.OnItemClick
     private val db = Firebase.firestore
     private val mAuth : FirebaseAuth = FirebaseAuth.getInstance()
     private val artistUID = mAuth.currentUser!!.uid
+    private lateinit var clientDbReference : DocumentReference
 
     private val tattooAdapter : TattooListAdapter = TattooListAdapter(this)
     var tattooList = emptyList<TattooInformation>()
@@ -45,7 +48,7 @@ class ClientProfileActivity : AppCompatActivity(), TattooListAdapter.OnItemClick
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_profile)
-        client = intent.getSerializableExtra("Client") as ClientInformation
+
 
 
         findViewsById()
@@ -66,8 +69,17 @@ class ClientProfileActivity : AppCompatActivity(), TattooListAdapter.OnItemClick
 
     override fun onResume() {
         super.onResume()
+        client = intent.getSerializableExtra("Client") as ClientInformation
+        val clientId = client.id
+        clientDbReference = db.collection("Tattoo Artist").document(artistUID).collection("Clients").document(clientId)
+        clientDbReference.get().addOnSuccessListener { result->
+            client = result.toObject()!!
+            setProfileInformation()
+        }.addOnFailureListener { exception ->
+            Log.w("GET CLIENT","Error getting document.", exception)
+        }
 
-        setProfileInformation()
+
 
         db.collection("Tattoo Artist")
                 .document(artistUID)
