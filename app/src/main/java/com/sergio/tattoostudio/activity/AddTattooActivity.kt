@@ -1,6 +1,7 @@
 package com.sergio.tattoostudio.activity
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -9,10 +10,14 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.sergio.tattoostudio.R
+import com.sergio.tattoostudio.entity.ClientInformation
 import com.sergio.tattoostudio.entity.TattooInformation
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -24,24 +29,35 @@ class AddTattooActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
     private lateinit var tattooDescription:String
     private lateinit var tattooName:String
-    private lateinit var tattooValue:String
+    private lateinit var tattooValueString:String
+    private var tattooValue:Double = 0.00
 
     private lateinit var buttonTattooDate : AppCompatButton
     private lateinit var buttonAddTattoo : AppCompatButton
 
     private var dateString:String = ""
-    private lateinit var clientId : String
+    private lateinit var client : ClientInformation
+    private lateinit var id:String
 
-    private var currentDate: Calendar = Calendar.getInstance()
-    private var mAuth : FirebaseAuth = FirebaseAuth.getInstance()
-    private var db = Firebase.firestore
-    private var artistUID = mAuth.currentUser!!.uid
+    private val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    private val currentDate: Calendar = Calendar.getInstance()
+    private val mAuth : FirebaseAuth = FirebaseAuth.getInstance()
+    private val db = Firebase.firestore
+    private val artistUID = mAuth.currentUser!!.uid
+    private lateinit var clientDbReference : DocumentReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_tattoo)
 
-        clientId = intent.getSerializableExtra("ClientId") as String
+        client = intent.getSerializableExtra("Client") as ClientInformation
+        val clientId = client.id
+        clientDbReference = db.collection("Tattoo Artist").document(artistUID).collection("Clients").document(clientId)
+
+        clientDbReference.get().addOnSuccessListener { result->
+            client = result.toObject()!!
+        }
 
         findViewsById()
 
@@ -57,24 +73,45 @@ class AddTattooActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
             if (validateString(tattooDescription,editTextDescription)&&
                 validateString(tattooName,editTextName)&&
-                validateString(tattooValue,editTextValue)&&
-                validateDate()) {
+                validateString(tattooValueString,editTextValue)&&
+                validateDate())
+                {
+                    tattooValue = tattooValueString.replace(',','.').toDouble()
+                    tattooValueString = "%.2f".format(tattooValue)
+                    updateClientsTattooInfo()
 
-                Toast.makeText(this, "Tattoo added.", Toast.LENGTH_SHORT).show()
-                val id: String = db.collection("Tattoo Artist").document(clientId).collection("Tattoos").document().id
-                val tattooInfo = TattooInformation(id,"",tattooName,tattooDescription,dateString,tattooValue)
+                    Toast.makeText(this, "Tattoo added.", Toast.LENGTH_SHORT).show()
+                    id = clientDbReference.collection("Tattoos").document().id
+                    val tattooInfo = TattooInformation(id,"",tattooName,tattooDescription,dateString,tattooValueString)
 
-                db.collection("Tattoo Artist").document(artistUID)
-                    .collection("Clients").document(clientId)
-                    .collection("Tattoos").document(id)
-                    .set(tattooInfo)
-
-                finish()
-            } else {
-                Toast.makeText(this, "An item is empty.", Toast.LENGTH_SHORT).show()
-            }
+                    clientDbReference.collection("Tattoos").document(id)
+                        .set(tattooInfo)
+                    val intent = Intent(this, ClientProfileActivity::class.java)
+                    intent.putExtra("Client",client)
+                    finish()
+                } else
+                    {
+                        Toast.makeText(this, "An item is empty.", Toast.LENGTH_SHORT).show()
+                    }
         }
     }
+
+    private fun updateClientsTattooInfo() {
+        if (client.isNewFirstDate(dateString,format)){
+            clientDbReference.update("cdateOfFirstTattoo",dateString)
+        }
+        if (client.isNewLastDate(dateString,format)){
+            clientDbReference.update("cdateOfLastTattoo",dateString)
+        }
+        var tattooCount = client.ctattooCount.toInt()
+        var tattooTotalCost = client.ctattooTotalCost.replace(',','.').toDouble()
+        tattooCount += 1
+        tattooTotalCost += tattooValue
+        clientDbReference.update("ctattooCount",tattooCount.toString())
+        clientDbReference.update("ctattooTotalCost","%.2f".format(tattooTotalCost))
+
+    }
+
 
     private fun findViewsById() {
         editTextDescription = findViewById(R.id.editText_addTattooDescription)
@@ -87,7 +124,7 @@ class AddTattooActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
     private fun getEditTextInfo() {
         tattooDescription = editTextDescription.text.toString()
         tattooName = editTextName.text.toString()
-        tattooValue = editTextValue.text.toString()
+        tattooValueString = editTextValue.text.toString()
     }
 
     private fun validateString(clientInformation: String, editTextId: AppCompatEditText): Boolean {
@@ -122,7 +159,6 @@ class AddTattooActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         val date = Calendar.getInstance()
         date.set(year, month, dayOfMonth)
-        val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         dateString = format.format(date.time)
         buttonTattooDate.text = dateString
     }

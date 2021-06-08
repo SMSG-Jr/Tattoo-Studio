@@ -11,6 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TattooStudio">
+        <activity android:name=".activity.EditTattooActivity"></activity>
+        <activity android:name=".activity.EditClientProfileActivity" />
         <activity android:name=".activity.AddTattooActivity" />
         <activity android:name=".activity.CreateAccountActivity" />
         <activity android:name=".activity.ClientProfileActivity" />

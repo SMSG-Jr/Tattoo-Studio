@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.EditClientProfileActivity">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_editClientProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/edit_client_profile"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_editClientPhoto"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/lavender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton_deleteTattoo"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_editProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="@string/name"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView_editClientPhoto"
+        app:layout_constraintTop_toTopOf="@+id/imageView_editClientPhoto" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_editClientName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:hint="@string/hint_name"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView_editProfileName"
+        app:layout_constraintTop_toBottomOf="@+id/textView_editProfileName" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_editProfileBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/birth_date"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/editText_editClientName"
+        app:layout_constraintTop_toBottomOf="@+id/editText_editClientName" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_editBirthDateButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/set_date"
+        app:layout_constraintEnd_toEndOf="@+id/editText_editClientName"
+        app:layout_constraintStart_toStartOf="@+id/textView_editProfileBirth"
+        app:layout_constraintTop_toBottomOf="@+id/textView_editProfileBirth" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_editProfileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/e_mail"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_editClientEmail"
+        app:layout_constraintStart_toStartOf="@+id/imageView_editClientPhoto"
+        app:layout_constraintTop_toTopOf="@+id/editText_editClientEmail" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_editClientEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/hint_Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/editText_editClientName"
+        app:layout_constraintHorizontal_bias="0.86"
+        app:layout_constraintStart_toEndOf="@+id/textView_editProfileEmail"
+        app:layout_constraintTop_toBottomOf="@+id/button_editBirthDateButton" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_editProfilePhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_number"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_editClientPhone"
+        app:layout_constraintStart_toStartOf="@+id/textView_editProfileEmail"
+        app:layout_constraintTop_toTopOf="@+id/editText_editClientPhone" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_editClientPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/hint_phone"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="@+id/editText_editClientName"
+        app:layout_constraintStart_toEndOf="@+id/textView_editProfilePhone"
+        app:layout_constraintTop_toBottomOf="@+id/editText_editClientEmail" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_editProfileInstagram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/instagram"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_editClientInstagram"
+        app:layout_constraintStart_toStartOf="@+id/textView_editProfilePhone"
+        app:layout_constraintTop_toTopOf="@+id/editText_editClientInstagram" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_editClientInstagram"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/editText_editClientName"
+        app:layout_constraintStart_toEndOf="@+id/textView_editProfileInstagram"
+        app:layout_constraintTop_toBottomOf="@+id/editText_editClientPhone" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_saveEdits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/save_changes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_editClientInstagram" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/imageButton_deleteTattoo"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

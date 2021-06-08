@@ -68,7 +68,6 @@ class AddClientActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListene
                     clientPhone,
                     clientEmail,
                     dateString,
-                    "XX/XX/XXXX"
                 )
 
                 db.collection("Tattoo Artist")

@@ -7,7 +7,7 @@
     tools:context=".activity.ClientProfileActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_clientProfile"
+        android:id="@+id/textView_editClientProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView_editClientPhoto"
         android:layout_width="144dp"
         android:layout_height="144dp"
         android:layout_marginStart="8dp"
@@ -26,19 +26,19 @@
         android:layout_marginTop="8dp"
         android:background="@color/lavender"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_clientProfile"
+        app:layout_constraintTop_toBottomOf="@+id/textView_editClientProfile"
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_ProfileName"
+        android:id="@+id/textView_editProfileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="@string/name"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintStart_toEndOf="@+id/imageView_editClientPhoto"
+        app:layout_constraintTop_toTopOf="@+id/imageView_editClientPhoto" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView_clientProfileName"
@@ -46,11 +46,11 @@
         android:layout_height="wrap_content"
         android:text="@string/text_placeholder"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/textView_ProfileName"
-        app:layout_constraintTop_toBottomOf="@+id/textView_ProfileName" />
+        app:layout_constraintStart_toStartOf="@+id/textView_editProfileName"
+        app:layout_constraintTop_toBottomOf="@+id/textView_editProfileName" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_ProfileBirth"
+        android:id="@+id/textView_editProfileBirth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/birth_date"
@@ -66,18 +66,18 @@
         android:layout_marginLeft="8dp"
         android:text="@string/date_placeholder"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/imageView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_editClientPhoto"
+        app:layout_constraintStart_toEndOf="@+id/imageView_editClientPhoto" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_profileEmail"
+        android:id="@+id/textView_editProfileEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/e_mail"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintStart_toStartOf="@+id/imageView_editClientPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_editClientPhoto" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView_clientProfileEmail"
@@ -87,19 +87,19 @@
         android:layout_marginLeft="8dp"
         android:text="@string/email_placeholder"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_profileEmail"
-        app:layout_constraintStart_toEndOf="@+id/textView_profileEmail"
-        app:layout_constraintTop_toTopOf="@+id/textView_profileEmail" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView_editProfileEmail"
+        app:layout_constraintStart_toEndOf="@+id/textView_editProfileEmail"
+        app:layout_constraintTop_toTopOf="@+id/textView_editProfileEmail" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_profilePhone"
+        android:id="@+id/textView_editProfilePhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/phone_number"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textView_profileEmail"
-        app:layout_constraintTop_toBottomOf="@+id/textView_profileEmail" />
+        app:layout_constraintStart_toStartOf="@+id/textView_editProfileEmail"
+        app:layout_constraintTop_toBottomOf="@+id/textView_editProfileEmail" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView_clientProfilePhone"
@@ -109,19 +109,19 @@
         android:layout_marginLeft="8dp"
         android:text="@string/phone_placeholder"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_profilePhone"
-        app:layout_constraintStart_toEndOf="@+id/textView_profilePhone"
-        app:layout_constraintTop_toTopOf="@+id/textView_profilePhone" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView_editProfilePhone"
+        app:layout_constraintStart_toEndOf="@+id/textView_editProfilePhone"
+        app:layout_constraintTop_toTopOf="@+id/textView_editProfilePhone" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_profileInstagram"
+        android:id="@+id/textView_editProfileInstagram"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/instagram"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textView_profilePhone"
-        app:layout_constraintTop_toBottomOf="@+id/textView_profilePhone" />
+        app:layout_constraintStart_toStartOf="@+id/textView_editProfilePhone"
+        app:layout_constraintTop_toBottomOf="@+id/textView_editProfilePhone" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView_clientProfileInstagram"
@@ -131,9 +131,9 @@
         android:layout_marginLeft="8dp"
         android:text="@string/text_placeholder"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_profileInstagram"
-        app:layout_constraintStart_toEndOf="@+id/textView_profileInstagram"
-        app:layout_constraintTop_toTopOf="@+id/textView_profileInstagram" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView_editProfileInstagram"
+        app:layout_constraintStart_toEndOf="@+id/textView_editProfileInstagram"
+        app:layout_constraintTop_toTopOf="@+id/textView_editProfileInstagram" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView_profileTattoo"
@@ -142,8 +142,8 @@
         android:layout_marginTop="16dp"
         android:text="@string/tattoos"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView_profileInstagram" />
+        app:layout_constraintStart_toStartOf="@+id/imageView_editClientPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/textView_editProfileInstagram" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView_clientTattooAmount"
@@ -246,5 +246,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_clientProfileLastTattoo" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/imageButton_editProfile"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

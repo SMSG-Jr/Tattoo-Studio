@@ -29,8 +29,8 @@
     <string name="email_placeholder">XXXXX@XXXXX.com</string>
     <string name="phone_placeholder">(XX)XXXXX_XXXX</string>
     <string name="tattoos">Tattoos:</string>
-    <string name="total_tattoo_cost">Total Tattoo cost:</string>
-    <string name="value_placeholder">R$XX,XX</string>
+    <string name="total_tattoo_cost">Total Tattoo cost: R$</string>
+    <string name="value_placeholder">XX,XX</string>
     <string name="first_tattoo_date">First Tattoo date:</string>
     <string name="last_tattoo_date">Last Tattoo date:</string>
     <string name="text_placeholder">XXXXXXXXX</string>
@@ -43,4 +43,6 @@
     <string name="add_tattoo">Add tattoo</string>
     <string name="hint_add_description">Add description…</string>
     <string name="hint_value">R$ - - , - -</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="edit_client_profile">Edit Client Profile</string>
 </resources>

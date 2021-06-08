@@ -78,4 +78,17 @@
         app:layout_constraintStart_toStartOf="@+id/editText_addTattooDescription"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/imageButton_deleteTattoo"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        android:clickable="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

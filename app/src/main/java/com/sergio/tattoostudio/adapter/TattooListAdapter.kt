@@ -32,7 +32,7 @@ class TattooListAdapter(private val listener: OnItemClickListener) : RecyclerVie
     }
 
     inner class TattooListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-            View.OnClickListener{
+            View.OnLongClickListener{
         val photo : AppCompatImageView = itemView.findViewById(R.id.imageView_tattooPhoto)
         private val name: AppCompatTextView = itemView.findViewById(R.id.textView_tattooName)
         private val description: AppCompatTextView = itemView.findViewById(R.id.textView_tattooDescription)
@@ -46,13 +46,15 @@ class TattooListAdapter(private val listener: OnItemClickListener) : RecyclerVie
             tattooValue.text = tattoo.tattooPrice
         }
         init {
-            itemView.setOnClickListener(this)
+            itemView.setOnLongClickListener(this)
         }
 
-        override fun onClick(v: View?) {
+        override fun onLongClick(v: View?): Boolean {
             val position = adapterPosition
-            if (position != RecyclerView.NO_POSITION)
+            if (position != RecyclerView.NO_POSITION){
                 listener.onItemClick(position)
+            }
+            return true
         }
     }
 

@@ -3,7 +3,9 @@ package com.sergio.tattoostudio.activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +31,7 @@ class ClientProfileActivity : AppCompatActivity(), TattooListAdapter.OnItemClick
     private lateinit var clientTattooLastDate : AppCompatTextView
     private lateinit var clientTattooFirstDate : AppCompatTextView
     private lateinit var addTattooFloatButton : FloatingActionButton
+    private lateinit var editProfileButton : AppCompatImageButton
     private lateinit var client : ClientInformation
 
     private val db = Firebase.firestore
@@ -42,8 +45,8 @@ class ClientProfileActivity : AppCompatActivity(), TattooListAdapter.OnItemClick
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_profile)
-
         client = intent.getSerializableExtra("Client") as ClientInformation
+
 
         findViewsById()
 
@@ -54,15 +57,18 @@ class ClientProfileActivity : AppCompatActivity(), TattooListAdapter.OnItemClick
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
         }
 
-        setProfileInformation()
-
         configFloatActionButton()
+
+        configEditProfileButton()
 
     }
 
 
     override fun onResume() {
         super.onResume()
+
+        setProfileInformation()
+
         db.collection("Tattoo Artist")
                 .document(artistUID)
                     .collection("Clients")
@@ -101,21 +107,31 @@ class ClientProfileActivity : AppCompatActivity(), TattooListAdapter.OnItemClick
         clientTattooFirstDate = findViewById(R.id.textView_clientProfileFirstTattoo)
         clientTattooLastDate = findViewById(R.id.textView_clientProfileLastTattoo)
         addTattooFloatButton = findViewById(R.id.floatingActionButton_addTattoo)
+        editProfileButton = findViewById(R.id.imageButton_editProfile)
     }
 
     private fun configFloatActionButton() {
         addTattooFloatButton.setOnClickListener {
             val intent = Intent(this, AddTattooActivity::class.java)
-            intent.putExtra("ClientId", client.id)
+            intent.putExtra("Client",client)
             startActivity(intent)
 
         }
     }
 
+    private fun configEditProfileButton(){
+        editProfileButton.setOnClickListener{
+            val intent = Intent(this, EditClientProfileActivity::class.java)
+            intent.putExtra("Client",client)
+            startActivity(intent)
+        }
+    }
+
     override fun onItemClick(position: Int) {
-        val clientClicked = tattooList[position]
-        //val intent = Intent(this, ClientProfileActivity::class.java)
-       // intent.putExtra("Client",clientClicked)
-       // startActivity(intent)
+        val tattooClicked = tattooList[position]
+        val intent = Intent(this, EditTattooActivity::class.java)
+        intent.putExtra("Tattoo",tattooClicked)
+        intent.putExtra("Client",client)
+        startActivity(intent)
     }
 }

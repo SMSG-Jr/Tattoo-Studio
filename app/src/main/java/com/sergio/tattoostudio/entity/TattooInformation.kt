@@ -1,5 +1,7 @@
 package com.sergio.tattoostudio.entity
 
+import java.io.Serializable
+
 data class TattooInformation(
         val id:String = "",
         val tattooPhoto:String = "",
@@ -7,4 +9,4 @@ data class TattooInformation(
         val tattooDescription:String = "",
         val tattooDate:String = "",
         val tattooPrice:String =""
-)
+): Serializable
